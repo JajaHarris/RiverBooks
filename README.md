@@ -2,9 +2,16 @@
 
 Sample application for [Modular Monolith Courses on Dometrain](https://dometrain.com/author/steve-ardalis-smith/). Use 'ARDALIS' for 20% off individual courses!
 
+## Architecture Overview
+
+[View this interactive diagram here](/docs/riverbooks.dynamic.html)
+
+Project Dependencies
+
 ## Updates
 
-**2025 July** Removed FluentAssertions and replaced with Shoudly.
+**2025 December** Updated to .NET 10 and replaced MediatR with [Mediator.SourceGen](https://github.com/martinothamar/Mediator).
+**2025 July** Removed FluentAssertions and replaced with [Shoudly](https://github.com/shouldly/shouldly).
 
 ## EF Migration Scripts
 

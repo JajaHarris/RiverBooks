@@ -24,6 +24,6 @@ internal class TopSalesByMonth1 :
   {
     var report = _reportService.ReachInSqlQuery(request.Month, request.Year);
     var response = new TopSalesByMonthResponse { Report = report };
-    await SendAsync(response);
+    await HttpContext.Response.SendAsync(response);
   }
 }

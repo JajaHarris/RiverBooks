@@ -20,6 +20,6 @@ internal class UpdatePrice(IBookService bookService) :
 
     var updatedBook = await _bookService.GetBookByIdAsync(request.Id);
 
-    await SendAsync(updatedBook);
+    await HttpContext.Response.SendAsync(updatedBook);
   }
 }

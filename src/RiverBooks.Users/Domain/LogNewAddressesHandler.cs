@@ -1,9 +1,9 @@
-﻿using MediatR;
+﻿using Mediator;
 using Microsoft.Extensions.Logging;
 
 namespace RiverBooks.Users.Domain;
 
-internal class LogNewAddressesHandler : INotificationHandler<AddressAddedEvent>
+public class LogNewAddressesHandler : INotificationHandler<AddressAddedEvent>
 {
   private readonly ILogger<LogNewAddressesHandler> _logger;
 
@@ -11,12 +11,12 @@ internal class LogNewAddressesHandler : INotificationHandler<AddressAddedEvent>
   {
     _logger = logger;
   }
-  public Task Handle(AddressAddedEvent notification, CancellationToken cancellationToken)
+  public ValueTask Handle(AddressAddedEvent notification, CancellationToken cancellationToken)
   {
     _logger.LogInformation("[DE Handler]New address added to user {user}: {address}",
       notification.NewAddress.UserId,
       notification.NewAddress.StreetAddress);
 
-    return Task.CompletedTask;
+    return ValueTask.CompletedTask;
   }
 }

@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.UserEndpoints;
 
 namespace RiverBooks.Users.UseCases.User.ListAddresses;
 
-internal record ListAddressesQuery(string EmailAddress) : IRequest<Result<List<UserAddressDto>>>;
+public record ListAddressesQuery(string EmailAddress) : IRequest<Result<List<UserAddressDto>>>;

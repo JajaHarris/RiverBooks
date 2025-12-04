@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Mediator;
 using Microsoft.Extensions.Logging;
 using RiverBooks.OrderProcessing.Domain;
 using RiverBooks.OrderProcessing.Interfaces;
@@ -6,7 +6,7 @@ using RiverBooks.Users.Contracts;
 
 namespace RiverBooks.OrderProcessing.Integrations;
 
-internal class AddressCacheUpdatingNewUserAddressHandler : INotificationHandler<NewUserAddressAddedIntegrationEvent>
+public class AddressCacheUpdatingNewUserAddressHandler : INotificationHandler<NewUserAddressAddedIntegrationEvent>
 {
   private readonly IOrderAddressCache _addressCache;
   private readonly ILogger<AddressCacheUpdatingNewUserAddressHandler> _logger;
@@ -18,7 +18,7 @@ internal class AddressCacheUpdatingNewUserAddressHandler : INotificationHandler<
     _logger = logger;
   }
 
-  public async Task Handle(NewUserAddressAddedIntegrationEvent notification, CancellationToken ct)
+  public async ValueTask Handle(NewUserAddressAddedIntegrationEvent notification, CancellationToken ct)
   {
     var orderAddress = new OrderAddress(notification.Details.AddressId,
       new Address(notification.Details.Street1,

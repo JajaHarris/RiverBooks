@@ -2,7 +2,7 @@
 using Ardalis.Result;
 using Ardalis.Result.AspNetCore;
 using FastEndpoints;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.UseCases.Cart.AddItem;
 
 namespace RiverBooks.Users.CartEndpoints;
@@ -32,15 +32,15 @@ internal class AddItem : Endpoint<AddCartItemRequest>
 
     if (result.Status == ResultStatus.Unauthorized)
     {
-      await SendUnauthorizedAsync();
+      await HttpContext.Response.SendUnauthorizedAsync();
     }
     if (result.Status == ResultStatus.Invalid)
     {
-      await SendResultAsync(result.ToMinimalApiResult());
+      await HttpContext.Response.SendResultAsync(result.ToMinimalApiResult());
     }
     else
     {
-      await SendOkAsync();
+      await HttpContext.Response.SendOkAsync();
     }
   }
 }

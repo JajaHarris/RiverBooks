@@ -1,10 +1,10 @@
-﻿using MediatR;
+﻿using Mediator;
 using RiverBooks.OrderProcessing.Contracts;
 using RiverBooks.OrderProcessing.Domain;
 
 namespace RiverBooks.OrderProcessing.Integrations;
 
-internal class PublishCreatedOrderIntegrationEventHandler : 
+public class PublishCreatedOrderIntegrationEventHandler : 
   INotificationHandler<OrderCreatedEvent>
 {
   private readonly IMediator _mediator;
@@ -14,7 +14,7 @@ internal class PublishCreatedOrderIntegrationEventHandler :
     _mediator = mediator;
   }
 
-  public async Task Handle(OrderCreatedEvent notification, CancellationToken cancellationToken)
+  public async ValueTask Handle(OrderCreatedEvent notification, CancellationToken cancellationToken)
   {
     var dto = new OrderDetailsDto()
     {

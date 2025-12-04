@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 using Ardalis.GuardClauses;
-using MediatR;
+using Mediator;
 using Microsoft.Extensions.Logging;
 
 namespace RiverBooks.SharedKernel;
 
 public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-  where TRequest : IRequest<TResponse>
+  where TRequest : IMessage
 {
   private readonly ILogger<LoggingBehavior<TRequest,TResponse>> _logger;
 
@@ -16,7 +16,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
     _logger = logger;
   }
 
-  public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+  public async ValueTask<TResponse> Handle(TRequest request, CancellationToken cancellationToken, MessageHandlerDelegate<TRequest, TResponse> next)
   {
     Guard.Against.Null(request);
     if (_logger.IsEnabled(LogLevel.Information))
@@ -35,7 +35,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
 
     var sw = Stopwatch.StartNew();
 
-    var response = await next();
+    var response = await next(request, cancellationToken);
 
     _logger.LogInformation("Handled {RequestName} with {Response} in {ms} ms", typeof(TRequest).Name, response, sw.ElapsedMilliseconds);
     sw.Stop();

@@ -1,6 +1,6 @@
 ﻿namespace RiverBooks.OrderProcessing.Domain;
 
-internal record Address(string Street1,
+public record Address(string Street1,
                       string Street2,
                       string City,
                       string State,

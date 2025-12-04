@@ -44,8 +44,8 @@ builder.Services.AddUsersModuleServices(builder.Configuration, logger, mediatRAs
 // OrderProcessing depends on Redis running
 // docker run --name my-redis -p 6379:6379 -d redis
 
-// Set up MediatR
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(mediatRAssemblies.ToArray()));
+// Set up Mediator (source generator based)
+builder.Services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
 builder.Services.AddMediatRLoggingBehavior();
 builder.Services.AddMediatRFluentValidationBehavior();
 builder.Services.AddValidatorsFromAssemblyContaining<AddItemToCartCommandValidator>();

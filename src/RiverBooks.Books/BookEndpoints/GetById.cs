@@ -20,10 +20,10 @@ internal class GetById(IBookService bookService) :
 
     if (book is null)
     {
-      await SendNotFoundAsync(cancellationToken);
+      await HttpContext.Response.SendNotFoundAsync(cancellationToken);
       return;
     }
 
-    await SendAsync(book);
+    await HttpContext.Response.SendAsync(book);
   }
 }

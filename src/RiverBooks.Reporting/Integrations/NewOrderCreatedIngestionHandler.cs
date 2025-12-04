@@ -1,10 +1,10 @@
-﻿using MediatR;
+﻿using Mediator;
 using Microsoft.Extensions.Logging;
 using RiverBooks.Books.Contracts;
 using RiverBooks.OrderProcessing.Contracts;
 
 namespace RiverBooks.Reporting.Integrations;
-internal class NewOrderCreatedIngestionHandler : INotificationHandler<OrderCreatedIntegrationEvent>
+public class NewOrderCreatedIngestionHandler : INotificationHandler<OrderCreatedIntegrationEvent>
 {
   private readonly ILogger<NewOrderCreatedIngestionHandler> _logger;
   private readonly OrderIngestionService _orderIngestionService;
@@ -19,7 +19,7 @@ internal class NewOrderCreatedIngestionHandler : INotificationHandler<OrderCreat
     _mediator = mediator;
   }
 
-  public async Task Handle(OrderCreatedIntegrationEvent notification, 
+  public async ValueTask Handle(OrderCreatedIntegrationEvent notification, 
     CancellationToken ct)
   {
     _logger.LogInformation("Handling order created event to populate reporting database...");

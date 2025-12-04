@@ -18,6 +18,6 @@ internal class Delete(IBookService bookService) :
   {
     await _bookService.DeleteBookAsync(request.Id);
 
-    await SendNoContentAsync();
+    await HttpContext.Response.SendNoContentAsync();
   }
 }

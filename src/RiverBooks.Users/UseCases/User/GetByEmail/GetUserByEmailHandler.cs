@@ -1,10 +1,10 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.Interfaces;
 
 namespace RiverBooks.Users.UseCases.User.GetByEmail;
 
-internal class GetUserByEmailHandler : IRequestHandler<GetUserByEmailQuery, Result<UserDTO>>
+public class GetUserByEmailHandler : IRequestHandler<GetUserByEmailQuery, Result<UserDTO>>
 {
   private readonly IApplicationUserRepository _userRepository;
 
@@ -13,7 +13,7 @@ internal class GetUserByEmailHandler : IRequestHandler<GetUserByEmailQuery, Resu
     _userRepository = userRepository;
   }
 
-  public async Task<Result<UserDTO>> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
+  public async ValueTask<Result<UserDTO>> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
   {
     var user = await _userRepository.GetUserWithCartByEmailAsync(request.EmailAddress);
 

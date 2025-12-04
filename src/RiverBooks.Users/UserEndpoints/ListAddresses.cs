@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Ardalis.Result;
 using FastEndpoints;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.UseCases.User.ListAddresses;
 
 namespace RiverBooks.Users.UserEndpoints;
@@ -32,7 +32,7 @@ internal class ListAddresses :
 
     if (result.Status == ResultStatus.Unauthorized)
     {
-      await SendUnauthorizedAsync();
+      await HttpContext.Response.SendUnauthorizedAsync();
     }
     else
     {
@@ -40,7 +40,7 @@ internal class ListAddresses :
 
       response.Addresses = result.Value;
 
-      await SendAsync(response);
+      await HttpContext.Response.SendAsync(response);
     }
   }
 }

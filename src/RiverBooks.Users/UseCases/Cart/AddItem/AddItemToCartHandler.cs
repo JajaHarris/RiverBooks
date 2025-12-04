@@ -1,12 +1,12 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using RiverBooks.Books.Contracts;
 using RiverBooks.Users.Domain;
 using RiverBooks.Users.Interfaces;
 
 namespace RiverBooks.Users.UseCases.Cart.AddItem;
 
-internal class AddItemToCartHandler : IRequestHandler<AddItemToCartCommand, Result>
+public class AddItemToCartHandler : IRequestHandler<AddItemToCartCommand, Result>
 {
   private readonly IApplicationUserRepository _userRepository;
   private readonly IMediator _mediator;
@@ -18,7 +18,7 @@ internal class AddItemToCartHandler : IRequestHandler<AddItemToCartCommand, Resu
     _mediator = mediator;
   }
 
-  public async Task<Result> Handle(AddItemToCartCommand request, CancellationToken cancellationToken)
+  public async ValueTask<Result> Handle(AddItemToCartCommand request, CancellationToken cancellationToken)
   {
     var user = await _userRepository.GetUserWithCartByEmailAsync(request.EmailAddress);
 

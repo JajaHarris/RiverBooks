@@ -1,5 +1,5 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.UserEndpoints;
 
 namespace RiverBooks.Users.UseCases.Addresses.GetById;

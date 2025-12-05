@@ -1,0 +1,637 @@
+// Custom SCSS for RiverBooks documentation
+// Dark Theme
+
+// ==========================================
+// Color Variables
+// ==========================================
+$bg-primary: #0f172a;        // Deep navy background
+$bg-secondary: #1e293b;      // Slightly lighter navy
+$bg-tertiary: #334155;       // Card/elevated surfaces
+$bg-hover: #475569;          // Hover states
+
+$text-primary: #f1f5f9;      // Main text - near white
+$text-secondary: #94a3b8;    // Secondary text - muted
+$text-muted: #64748b;        // Muted text
+
+$accent-primary: #38bdf8;    // Sky blue accent
+$accent-secondary: #818cf8;  // Indigo accent
+$accent-success: #34d399;    // Green for success
+$accent-warning: #fbbf24;    // Yellow for warnings
+$accent-error: #f87171;      // Red for errors
+
+$border-color: rgba(148, 163, 184, 0.2);
+$border-hover: rgba(56, 189, 248, 0.5);
+
+// ==========================================
+// Global Dark Theme
+// ==========================================
+body {
+  background-color: $bg-primary;
+  color: $text-primary;
+}
+
+// ==========================================
+// Typography
+// ==========================================
+h1, h2, h3, h4, h5, h6 {
+  color: $text-primary;
+}
+
+p, li {
+  color: $text-secondary;
+}
+
+a {
+  color: $accent-primary;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: lighten($accent-primary, 15%);
+  }
+}
+
+// ==========================================
+// Navigation & Header
+// ==========================================
+.navbar,
+header,
+.header {
+  background-color: $bg-secondary;
+  border-bottom: 1px solid $border-color;
+  
+  .nav-link {
+    color: $text-secondary;
+    
+    &:hover {
+      color: $text-primary;
+    }
+    
+    &.active {
+      color: $accent-primary;
+    }
+  }
+}
+
+.navbar-brand {
+  color: $text-primary !important;
+}
+
+// ==========================================
+// Sidebar
+// ==========================================
+.docs-sidebar,
+.sidebar {
+  background: $bg-secondary;
+  border-right: 1px solid $border-color;
+  
+  // All links in sidebar
+  a {
+    color: $text-secondary;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: $accent-primary;
+    }
+    
+    &.active {
+      color: $accent-primary;
+      font-weight: 600;
+    }
+  }
+  
+  .section-nav,
+  .nav,
+  .docs-links {
+    .nav-link,
+    li a {
+      color: $text-secondary;
+      border-radius: 0.375rem;
+      margin-bottom: 0.25rem;
+      transition: all 0.2s ease;
+      display: block;
+      padding: 0.25rem 0.5rem;
+      
+      &:hover {
+        background-color: rgba($accent-primary, 0.1);
+        color: $text-primary;
+      }
+      
+      &.active {
+        background-color: rgba($accent-primary, 0.15);
+        color: $accent-primary;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  // List items in sidebar
+  .list-unstyled {
+    li {
+      a {
+        color: $text-secondary;
+        
+        &:hover {
+          color: $accent-primary;
+        }
+        
+        &.active {
+          color: $accent-primary;
+        }
+      }
+    }
+  }
+  
+  .docs-toc-title,
+  .sidebar-title {
+    color: $text-primary;
+    font-weight: 600;
+  }
+}
+
+// ==========================================
+// Main Content Area
+// ==========================================
+.docs-content,
+.content,
+main,
+article {
+  background-color: $bg-primary;
+}
+
+// ==========================================
+// Cards
+// ==========================================
+.card {
+  background-color: $bg-secondary;
+  border-radius: 0.75rem;
+  border: 1px solid $border-color;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    border-color: $border-hover;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .card-header {
+    background-color: $bg-tertiary;
+    border-bottom: 1px solid $border-color;
+    color: $text-primary;
+  }
+  
+  .card-body {
+    color: $text-secondary;
+  }
+  
+  .card-title {
+    color: $text-primary;
+  }
+  
+  .card-footer {
+    background-color: $bg-tertiary;
+    border-top: 1px solid $border-color;
+  }
+}
+
+// ==========================================
+// Code Blocks
+// ==========================================
+pre {
+  background-color: #0d1117;
+  border: 1px solid $border-color;
+  border-radius: 0.5rem;
+  
+  code {
+    color: $text-primary;
+  }
+}
+
+code {
+  background-color: rgba($accent-primary, 0.1);
+  color: $accent-primary;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+// Syntax highlighting adjustments for dark theme
+.highlight {
+  background-color: #0d1117;
+  border-radius: 0.5rem;
+  
+  .c, .c1, .cm { color: #8b949e; }     // Comments
+  .k, .kd, .kn { color: #ff7b72; }     // Keywords
+  .s, .s1, .s2 { color: #a5d6ff; }     // Strings
+  .n, .na { color: #79c0ff; }          // Names
+  .nf { color: #d2a8ff; }              // Functions
+  .nb { color: #ffa657; }              // Built-ins
+  .mi, .mf { color: #79c0ff; }         // Numbers
+  .o { color: #ff7b72; }               // Operators
+}
+
+// ==========================================
+// Tables
+// ==========================================
+.table,
+table {
+  background-color: $bg-secondary !important;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  color: $text-secondary;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid $border-color;
+  
+  th {
+    background-color: $bg-tertiary !important;
+    color: $text-primary !important;
+    border-bottom: 2px solid $border-color;
+    padding: 0.75rem 1rem;
+  }
+  
+  td {
+    background-color: $bg-secondary !important;
+    color: $text-secondary !important;
+    border-color: $border-color;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid $border-color;
+  }
+  
+  tr:hover td {
+    background-color: $bg-tertiary !important;
+  }
+  
+  tbody tr:nth-of-type(odd) td {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  tbody tr:nth-of-type(odd):hover td {
+    background-color: $bg-tertiary !important;
+  }
+}
+
+// ==========================================
+// Blockquotes & Callouts
+// ==========================================
+blockquote {
+  border-left: 4px solid $accent-primary;
+  background-color: rgba($accent-primary, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1.5rem 0;
+  color: $text-secondary;
+  
+  p {
+    margin-bottom: 0;
+  }
+}
+
+// Alert/Callout variants
+.alert,
+.callout {
+  border-radius: 0.5rem;
+  border: 1px solid;
+  
+  &.alert-info,
+  &.callout-info {
+    background-color: rgba($accent-primary, 0.1);
+    border-color: rgba($accent-primary, 0.3);
+    color: $accent-primary;
+  }
+  
+  &.alert-success,
+  &.callout-success {
+    background-color: rgba($accent-success, 0.1);
+    border-color: rgba($accent-success, 0.3);
+    color: $accent-success;
+  }
+  
+  &.alert-warning,
+  &.callout-warning {
+    background-color: rgba($accent-warning, 0.1);
+    border-color: rgba($accent-warning, 0.3);
+    color: $accent-warning;
+  }
+  
+  &.alert-danger,
+  &.callout-danger {
+    background-color: rgba($accent-error, 0.1);
+    border-color: rgba($accent-error, 0.3);
+    color: $accent-error;
+  }
+}
+
+// ==========================================
+// Buttons
+// ==========================================
+.btn {
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  
+  &.btn-primary {
+    background-color: $accent-primary;
+    border-color: $accent-primary;
+    color: $bg-primary;
+    
+    &:hover {
+      background-color: lighten($accent-primary, 10%);
+      border-color: lighten($accent-primary, 10%);
+    }
+  }
+  
+  &.btn-secondary {
+    background-color: $bg-tertiary;
+    border-color: $border-color;
+    color: $text-primary;
+    
+    &:hover {
+      background-color: $bg-hover;
+      border-color: $border-hover;
+    }
+  }
+  
+  &.btn-outline-primary {
+    border-color: $accent-primary;
+    color: $accent-primary;
+    
+    &:hover {
+      background-color: $accent-primary;
+      color: $bg-primary;
+    }
+  }
+}
+
+// ==========================================
+// Forms & Inputs
+// ==========================================
+input,
+textarea,
+select,
+.form-control {
+  background-color: $bg-tertiary;
+  border: 1px solid $border-color;
+  color: $text-primary;
+  border-radius: 0.375rem;
+  
+  &:focus {
+    background-color: $bg-secondary;
+    border-color: $accent-primary;
+    box-shadow: 0 0 0 3px rgba($accent-primary, 0.2);
+    outline: none;
+  }
+  
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+// Search box
+.search-input,
+input[type="search"] {
+  background-color: $bg-tertiary;
+  border: 1px solid $border-color;
+  color: $text-primary;
+  
+  &:focus {
+    background-color: $bg-secondary;
+    border-color: $accent-primary;
+  }
+}
+
+// ==========================================
+// Heading Anchors
+// ==========================================
+.anchor {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: $accent-primary;
+}
+
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor {
+  opacity: 0.7;
+}
+
+// ==========================================
+// Footer
+// ==========================================
+footer,
+.footer {
+  background-color: $bg-secondary;
+  border-top: 1px solid $border-color;
+  color: $text-secondary;
+  
+  a {
+    color: $text-secondary;
+    
+    &:hover {
+      color: $accent-primary;
+    }
+  }
+}
+
+// ==========================================
+// Breadcrumbs
+// ==========================================
+.breadcrumb {
+  background-color: transparent;
+  
+  .breadcrumb-item {
+    color: $text-muted;
+    
+    a {
+      color: $text-secondary;
+      
+      &:hover {
+        color: $accent-primary;
+      }
+    }
+    
+    &.active {
+      color: $text-primary;
+    }
+    
+    &::before {
+      color: $text-muted;
+    }
+  }
+}
+
+// ==========================================
+// Pagination
+// ==========================================
+.pagination {
+  .page-item {
+    .page-link {
+      background-color: $bg-secondary;
+      border-color: $border-color;
+      color: $text-secondary;
+      
+      &:hover {
+        background-color: $bg-tertiary;
+        border-color: $border-hover;
+        color: $text-primary;
+      }
+    }
+    
+    &.active .page-link {
+      background-color: $accent-primary;
+      border-color: $accent-primary;
+      color: $bg-primary;
+    }
+    
+    &.disabled .page-link {
+      background-color: $bg-tertiary;
+      color: $text-muted;
+    }
+  }
+}
+
+// ==========================================
+// Table of Contents
+// ==========================================
+.toc,
+.docs-toc {
+  border-left: 1px solid $border-color;
+  
+  a {
+    color: $text-muted;
+    
+    &:hover {
+      color: $text-primary;
+    }
+    
+    &.active {
+      color: $accent-primary;
+      border-left: 2px solid $accent-primary;
+    }
+  }
+}
+
+// ==========================================
+// Badge/Tag Styling
+// ==========================================
+.badge {
+  background-color: $bg-tertiary;
+  color: $text-primary;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  
+  &.badge-primary {
+    background-color: rgba($accent-primary, 0.2);
+    color: $accent-primary;
+  }
+  
+  &.badge-secondary {
+    background-color: rgba($accent-secondary, 0.2);
+    color: $accent-secondary;
+  }
+}
+
+// ==========================================
+// Details/Summary (Collapsible sections)
+// ==========================================
+details {
+  background-color: $bg-secondary;
+  border: 1px solid $border-color;
+  border-radius: 0.5rem;
+  
+  summary {
+    color: $text-primary;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    
+    &:hover {
+      background-color: $bg-tertiary !important;
+      color: $text-primary !important;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($accent-primary, 0.3);
+    }
+  }
+}
+
+// Standalone summary elements (like "On this page")
+summary {
+  color: $text-primary;
+  
+  &:hover {
+    background-color: $bg-tertiary !important;
+    color: $text-primary !important;
+  }
+}
+
+// ==========================================
+// Scrollbar Styling
+// ==========================================
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $bg-hover;
+  border-radius: 4px;
+  
+  &:hover {
+    background: $text-muted;
+  }
+}
+
+// ==========================================
+// Selection Highlight
+// ==========================================
+::selection {
+  background-color: rgba($accent-primary, 0.3);
+  color: $text-primary;
+}
+
+// ==========================================
+// HR / Dividers
+// ==========================================
+hr {
+  border-color: $border-color;
+  opacity: 0.5;
+}
+
+// ==========================================
+// Lists
+// ==========================================
+ul, ol {
+  li {
+    color: $text-secondary;
+    
+    &::marker {
+      color: $accent-primary;
+    }
+  }
+}
+
+// ==========================================
+// Images
+// ==========================================
+img {
+  border-radius: 0.5rem;
+}
+
+figure {
+  figcaption {
+    color: $text-muted;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+}

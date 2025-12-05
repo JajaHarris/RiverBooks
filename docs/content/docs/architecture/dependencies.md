@@ -1,0 +1,48 @@
+---
+title: "Dependencies Diagram"
+description: "Interactive dependency diagram showing module relationships"
+summary: "Visual overview of how RiverBooks modules depend on each other"
+date: 2024-12-04
+weight: 1
+---
+
+This interactive diagram shows the dependencies between all projects in the RiverBooks solution.
+
+## Interactive Dependency Diagram
+
+<iframe 
+  src="/diagrams/riverbooks.dynamic.html" 
+  width="100%" 
+  height="800px" 
+  style="border: 1px solid #ccc; border-radius: 8px;"
+  title="RiverBooks Dependency Diagram">
+</iframe>
+
+## Understanding the Diagram
+
+The diagram visualizes:
+
+- **Nodes**: Each project in the solution
+- **Edges**: Dependencies between projects (arrows point from dependent to dependency)
+- **Colors**: Different colors may represent different module types
+
+## Key Observations
+
+### Module Independence
+
+Notice how each feature module (Books, Users, OrderProcessing, etc.) has its own Contracts project. This allows other modules to depend on the interface without coupling to the implementation.
+
+### SharedKernel
+
+The `RiverBooks.SharedKernel` project is referenced by multiple modules. It contains:
+- Base classes for entities and value objects
+- Common interfaces (like `IDomainEvent`)
+- Cross-cutting concerns
+
+### Web Host
+
+The `RiverBooks.Web` project references all modules to compose them into a single running application.
+
+## Static Version
+
+If the interactive diagram doesn't load, you can [view the HTML file directly](/diagrams/riverbooks.dynamic.html).

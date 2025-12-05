@@ -1,5 +1,5 @@
-# Production configuration for GitHub Pages
+# Production configuration for Cloudflare Pages
 # This overrides the default config when building for production
 
-baseURL = "https://ardalis.github.io/RiverBooks/"
+baseURL = "https://riverbooks.ardalis.com/"
 canonifyURLs = false

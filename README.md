@@ -2,11 +2,11 @@
 
 Sample application for [Modular Monolith Courses on Dometrain](https://dometrain.com/author/steve-ardalis-smith/). Use 'ARDALIS' for 20% off individual courses!
 
-📚 **[View Full Documentation](https://ardalis.github.io/RiverBooks/docs/)**
+📚 **[View Full Documentation](https://riverbooks.ardalis.com/)**
 
 ## Architecture Overview
 
-[View the interactive dependency diagram](https://ardalis.github.io/RiverBooks/docs/architecture/dependencies/)
+[View the interactive dependency diagram](https://riverbooks.ardalis.com/docs/architecture/dependencies/)
 
 Project Dependencies
 

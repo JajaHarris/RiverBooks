@@ -1,0 +1,5 @@
+# Production configuration for GitHub Pages
+# This overrides the default config when building for production
+
+baseURL = "https://ardalis.github.io/RiverBooks/"
+canonifyURLs = false

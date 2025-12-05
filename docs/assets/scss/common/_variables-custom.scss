@@ -1,0 +1,29 @@
+// Custom SCSS variables for RiverBooks theme
+
+// Primary brand color (sky blue)
+$primary: #0284c7;
+$secondary: #64748b;
+
+// Enhance the link colors
+$link-color: #0284c7;
+$link-hover-color: #0369a1;
+
+// Border radius for softer look
+$border-radius: 0.5rem;
+$border-radius-sm: 0.375rem;
+$border-radius-lg: 0.75rem;
+
+// Dark mode colors
+$body-bg-dark: #0f172a;
+$body-color-dark: #e2e8f0;
+$link-color-dark: #38bdf8;
+$button-color-dark: #38bdf8;
+
+// Light mode adjustments
+$body-color: #1e293b;
+
+// Accent color used in various components
+:root,
+::backdrop {
+  --sl-color-accent-high: #004aad;
+}

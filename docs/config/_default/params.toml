@@ -1,0 +1,131 @@
+# Hugo
+title = "RiverBooks Documentation"
+description = "Documentation for RiverBooks - A Modular Monolith Sample Application built with .NET"
+images = ["cover.png"]
+
+# mainSections
+mainSections = ["docs"]
+
+# Doks (@thulite/doks-core)
+[doks]
+  # Color mode
+  colorMode = "auto"
+  colorModeToggler = true
+
+  # Navbar
+  navbarSticky = true
+  containerBreakpoint = "lg"
+
+  ## Button
+  navBarButton = true
+  navBarButtonUrl = "/docs/"
+  navBarButtonText = "Get started"
+
+  # FlexSearch
+  flexSearch = true
+  searchExclKinds = []
+  searchExclTypes = []
+  showSearch = []
+  indexSummary = false
+
+  ## Search results
+  showDate = false
+  showSummary = true
+  searchLimit = 99
+
+  # Global alert
+  alert = false
+  alertDismissable = true
+
+  # Bootstrap
+  bootstrapJavascript = true
+
+  # Nav
+  sectionNav = ["docs"]
+  toTopButton = true
+  breadcrumbTrail = true
+  headlineHash = true
+  scrollSpy = true
+
+  # Multilingual
+  multilingualMode = false
+  showMissingLanguages = true
+
+  # Versioning
+  docsVersioning = false
+  docsVersion = "1.0"
+
+  # UX
+  headerBar = false
+  backgroundDots = true
+
+  # Homepage
+  sectionFooter = false
+
+  # Blog
+  relatedPosts = false
+  imageList = true
+  imageSingle = true
+
+  # Repository
+  editPage = true
+  lastMod = false
+  repoHost = "GitHub"
+  docsRepo = "https://github.com/ardalis/RiverBooks"
+  docsRepoBranch = "main"
+  docsRepoSubPath = "docs"
+
+  # Custom colors - RiverBooks blue/teal theme
+  # Dark theme
+  backGround = "#0f172a"      # Dark slate background
+  textDark = "#e2e8f0"        # Light gray text
+  accentDark = "#38bdf8"      # Sky blue accent
+  
+  # Light theme  
+  textLight = "#1e293b"       # Dark slate text
+  accentLight = "#0284c7"     # Sky blue accent
+
+# Debug
+[render_hooks.image]
+  errorLevel = 'ignore'
+
+[render_hooks.link]
+  errorLevel = 'ignore'
+  highlightBroken = false
+
+# Images (@thulite/images)
+[thulite_images]
+  [thulite_images.defaults]
+    decoding = "async"
+    fetchpriority = "auto"
+    loading = "lazy"
+    widths = [480, 576, 768, 1025, 1200, 1440]
+    sizes = "auto"
+    process = ""
+    lqip = "16x webp q20"
+
+# Inline SVG (@thulite/inline-svg)
+[inline_svg]
+  iconSetDir = "tabler-icons"
+
+# SEO (@thulite/seo)
+[seo]
+  [seo.title]
+    separator = " | "
+    suffix = ""
+  [seo.favicons]
+    sizes = []
+    icon = "favicon.png"
+    svgIcon = "favicon.svg"
+    maskIcon = "mask-icon.svg"
+    maskIconColor = "white"
+  [seo.schemas]
+    type = "Organization"
+    logo = "favicon-512x512.png"
+    name = "RiverBooks"
+    sameAs = ["https://github.com/ardalis/RiverBooks"]
+    images = ["cover.png"]
+    article = []
+    newsArticle = []
+    blogPosting = []
+    product = []

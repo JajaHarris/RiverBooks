@@ -6,9 +6,11 @@ date: 2024-12-04
 weight: 1
 ---
 
-This interactive diagram shows the dependencies between all projects in the RiverBooks solution.
+This interactive diagram shows the dependencies between all projects in the RiverBooks solution. Modules are color-coded; non-module projects are grey. Note that main module projects (those without `.Tests` or `.Contracts` suffixes) should only be referenced by their own tests project and the application host (`RiverBooks.Web`).
 
 ## Interactive Dependency Diagram
+
+Built with (secret tool).
 
 <iframe 
   src="/diagrams/riverbooks.dynamic.html" 

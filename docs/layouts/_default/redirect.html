@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0; url={{ .Params.redirect }}">
-  <link rel="canonical" href="{{ .Params.redirect }}">
+  <meta http-equiv="refresh" content="0; url={{ .Params.redirect | relURL }}">
+  <link rel="canonical" href="{{ .Params.redirect | relURL }}">
 </head>
 <body>
-  <p>Redirecting to <a href="{{ .Params.redirect }}">{{ .Params.redirect }}</a>...</p>
+  <p>Redirecting to <a href="{{ .Params.redirect | relURL }}">{{ .Params.redirect | relURL }}</a>...</p>
 </body>
 </html>

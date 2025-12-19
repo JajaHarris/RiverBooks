@@ -30,6 +30,7 @@
     <ProjectReference Include="..\RiverBooks.Reporting\RiverBooks.Reporting.csproj" />
     <ProjectReference Include="..\RiverBooks.SharedKernel\RiverBooks.SharedKernel.csproj" />
     <ProjectReference Include="..\RiverBooks.Users\RiverBooks.Users.csproj" />
+    <ProjectReference Include="..\RiverBooks.ServiceDefaults\RiverBooks.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

@@ -19,11 +19,14 @@ logger.Information("Starting web host");
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add Aspire service defaults (OpenTelemetry, health checks, etc.)
+builder.AddServiceDefaults();
+
 builder.Host.UseSerilog((_, config) => config.ReadFrom.Configuration(builder.Configuration));
 builder.Services.AddHttpLogging(o => { });
 
 builder.Services.AddFastEndpoints()
-    .AddAuthenticationJwtBearer(s => 
+    .AddAuthenticationJwtBearer(s =>
     {
       s.SigningKey = builder.Configuration["Auth:JwtSecret"];
     })
@@ -62,6 +65,9 @@ app.UseAuthentication()
 
 app.UseFastEndpoints()
     .UseSwaggerGen();
+
+// Map Aspire default endpoints (health checks)
+app.MapDefaultEndpoints();
 
 app.Run();
 

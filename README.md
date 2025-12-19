@@ -6,7 +6,7 @@ Sample application for [Modular Monolith Courses on Dometrain](https://dometrain
 
 ## Architecture Overview
 
-[View the interactive dependency diagram](https://riverbooks.ardalis.com/docs/architecture/dependencies/)
+[View the interactive dependency diagram](https://riverbooks.ardalis.com/docs/architecture/dependencies-diagram/#interactive-dependency-diagram)
 
 Project Dependencies
 

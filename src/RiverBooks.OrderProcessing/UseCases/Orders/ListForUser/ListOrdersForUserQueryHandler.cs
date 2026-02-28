@@ -1,11 +1,11 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using RiverBooks.OrderProcessing.Interfaces;
 using RiverBooks.Users.UseCases;
 
 namespace RiverBooks.OrderProcessing.UseCases.Orders.ListForUser;
 
-internal class ListOrdersForUserQueryHandler : IRequestHandler<ListOrdersForUserQuery, Result<List<OrderSummary>>>
+public class ListOrdersForUserQueryHandler : IRequestHandler<ListOrdersForUserQuery, Result<List<OrderSummary>>>
 {
   private readonly IOrderRepository _orderRepository;
 
@@ -14,7 +14,7 @@ internal class ListOrdersForUserQueryHandler : IRequestHandler<ListOrdersForUser
     _orderRepository = orderRepository;
   }
 
-  public async Task<Result<List<OrderSummary>>> Handle(ListOrdersForUserQuery request, CancellationToken cancellationToken)
+  public async ValueTask<Result<List<OrderSummary>>> Handle(ListOrdersForUserQuery request, CancellationToken cancellationToken)
   {
     // look up UserId for EmailAddress
 

@@ -23,6 +23,6 @@ internal class Create(IBookService bookService) :
 
     await _bookService.CreateBookAsync(newBookDto);
 
-    await SendCreatedAtAsync<GetById>(new { newBookDto.Id }, newBookDto);
+    await HttpContext.Response.SendCreatedAtAsync<GetById>(new { newBookDto.Id }, newBookDto);
   }
 }

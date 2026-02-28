@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
 using System.Security.Claims;
 using FastEndpoints;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.UseCases.User.AddAddress;
 
 namespace RiverBooks.Users.UserEndpoints;
@@ -38,11 +38,11 @@ internal sealed class AddAddress : Endpoint<AddAddressRequest>
 
     if (result.Status == ResultStatus.Unauthorized)
     {
-      await SendUnauthorizedAsync();
+      await HttpContext.Response.SendUnauthorizedAsync();
     }
     else
     {
-      await SendOkAsync();
+      await HttpContext.Response.SendOkAsync();
     }
   }
 }

@@ -17,6 +17,6 @@ sealed class Protected : EndpointWithoutRequest
   public override async Task HandleAsync(CancellationToken c)
   {
     var emailAddress = User.FindFirstValue("EmailAddress");
-    await SendAsync($"You are [{emailAddress}] and you are authorized!");
+    await HttpContext.Response.SendAsync($"You are [{emailAddress}] and you are authorized!");
   }
 }

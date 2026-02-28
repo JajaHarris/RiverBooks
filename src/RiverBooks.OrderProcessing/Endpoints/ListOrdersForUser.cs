@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Ardalis.Result;
 using FastEndpoints;
-using MediatR;
+using Mediator;
 using RiverBooks.OrderProcessing.UseCases.Orders.ListForUser;
 using RiverBooks.Users.CartEndpoints;
 
@@ -33,7 +33,7 @@ internal class ListOrdersForUser :
 
     if (result.Status == ResultStatus.Unauthorized)
     {
-      await SendUnauthorizedAsync();
+      await HttpContext.Response.SendUnauthorizedAsync();
     }
     else
     {
@@ -48,7 +48,7 @@ internal class ListOrdersForUser :
             UserId = o.UserId
           })
         .ToList();
-      await SendAsync(response);
+      await HttpContext.Response.SendAsync(response);
     }
   }
 }

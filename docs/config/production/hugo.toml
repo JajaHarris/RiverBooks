@@ -1,0 +1,5 @@
+# Production configuration for Cloudflare Pages
+# This overrides the default config when building for production
+
+baseURL = "https://riverbooks.ardalis.com/"
+canonifyURLs = false

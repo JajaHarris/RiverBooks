@@ -1,11 +1,11 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Identity;
 using RiverBooks.Users.Domain;
 
 namespace RiverBooks.Users.UseCases.User.Create;
 
-internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Result>
+public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Result>
 {
   private readonly UserManager<ApplicationUser> _userManager;
 
@@ -14,7 +14,7 @@ internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Res
     _userManager = userManager;
   }
 
-  public async Task<Result> Handle(CreateUserCommand command, 
+  public async ValueTask<Result> Handle(CreateUserCommand command, 
     CancellationToken ct)
   {
     var newUser = new ApplicationUser { Email = command.Email, UserName = command.Email };

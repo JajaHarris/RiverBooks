@@ -18,7 +18,7 @@ internal class List(IBookService bookService) :
   {
     var books = await _bookService.ListBooksAsync();
 
-    await SendAsync(new ListBooksResponse()
+    await HttpContext.Response.SendAsync(new ListBooksResponse()
     {
       Books = books
     });

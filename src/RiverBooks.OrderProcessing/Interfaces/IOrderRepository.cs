@@ -1,7 +1,7 @@
 ﻿using RiverBooks.OrderProcessing.Domain;
 
 namespace RiverBooks.OrderProcessing.Interfaces;
-internal interface IOrderRepository
+public interface IOrderRepository
 {
   Task<List<Order>> ListAsync();
   Task AddAsync(Order order);

@@ -24,6 +24,6 @@ internal class TopSalesByMonth2 :
   {
     var report = await _reportService.GetTopBooksByMonthReport(request.Month, request.Year);
     var response = new TopSalesByMonthResponse { Report = report };
-    await SendAsync(response);
+    await HttpContext.Response.SendAsync(response);
   }
 }

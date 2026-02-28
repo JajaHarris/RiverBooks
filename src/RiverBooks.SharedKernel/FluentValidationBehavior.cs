@@ -1,13 +1,13 @@
 ﻿using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using FluentValidation;
-using MediatR;
+using Mediator;
 
 namespace RiverBooks.SharedKernel;
 
 public class FluentValidationBehavior<TRequest, TResponse> :
   IPipelineBehavior<TRequest, TResponse>
-  where TRequest : IRequest<TResponse>
+  where TRequest : IMessage
 {
   private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -16,8 +16,8 @@ public class FluentValidationBehavior<TRequest, TResponse> :
     _validators = validators;
   }
 
-  public async Task<TResponse> Handle(TRequest request,
-    RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+  public async ValueTask<TResponse> Handle(TRequest request,
+    CancellationToken cancellationToken, MessageHandlerDelegate<TRequest, TResponse> next)
   {
     if (_validators.Any())
     {
@@ -53,6 +53,6 @@ public class FluentValidationBehavior<TRequest, TResponse> :
       }
 #nullable enable
     }
-    return await next();
+    return await next(request, cancellationToken);
   }
 }

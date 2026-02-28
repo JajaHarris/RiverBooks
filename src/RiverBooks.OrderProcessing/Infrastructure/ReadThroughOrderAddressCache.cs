@@ -1,5 +1,5 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using Microsoft.Extensions.Logging;
 using RiverBooks.OrderProcessing.Domain;
 using RiverBooks.OrderProcessing.Interfaces;

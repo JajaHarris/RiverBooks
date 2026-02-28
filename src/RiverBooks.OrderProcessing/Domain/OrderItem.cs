@@ -2,7 +2,7 @@
 
 namespace RiverBooks.OrderProcessing.Domain;
 
-internal class OrderItem
+public class OrderItem
 {
   public OrderItem(Guid bookId, int quantity, decimal unitPrice, string description)
   {

@@ -24,14 +24,14 @@ public class Login : Endpoint<UserLoginRequest>
     var user = await _userManager.FindByEmailAsync(request.Email!);
     if (user is null)
     {
-      await SendUnauthorizedAsync();
+      await HttpContext.Response.SendUnauthorizedAsync();
       return;
     }
     var loginSuccessful = await _userManager.CheckPasswordAsync(user, request.Password);
 
     if (!loginSuccessful)
     {
-      await SendUnauthorizedAsync();
+      await HttpContext.Response.SendUnauthorizedAsync();
       return;
     }
 
@@ -41,6 +41,6 @@ public class Login : Endpoint<UserLoginRequest>
       options.SigningKey = jwtSecret;
       options.User["EmailAddress"] = user.Email!;
     });
-    await SendAsync(token);
+    await HttpContext.Response.SendAsync(token);
   }
 }

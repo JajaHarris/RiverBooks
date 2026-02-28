@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Ardalis.Result;
 using FastEndpoints;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.UseCases.Cart.AddItem;
 
 namespace RiverBooks.Users.CartEndpoints;
@@ -33,11 +33,11 @@ internal class Checkout : Endpoint<CheckoutRequest, CheckoutResponse>
 
     if (result.Status == ResultStatus.Unauthorized)
     {
-      await SendUnauthorizedAsync();
+      await HttpContext.Response.SendUnauthorizedAsync();
     }
     else
     {
-      await SendOkAsync();
+      await HttpContext.Response.SendOkAsync();
     }
   }
 

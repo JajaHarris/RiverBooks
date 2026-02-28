@@ -19,11 +19,14 @@ logger.Information("Starting web host");
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add Aspire service defaults (OpenTelemetry, health checks, etc.)
+builder.AddServiceDefaults();
+
 builder.Host.UseSerilog((_, config) => config.ReadFrom.Configuration(builder.Configuration));
 builder.Services.AddHttpLogging(o => { });
 
 builder.Services.AddFastEndpoints()
-    .AddAuthenticationJwtBearer(s => 
+    .AddAuthenticationJwtBearer(s =>
     {
       s.SigningKey = builder.Configuration["Auth:JwtSecret"];
     })
@@ -44,8 +47,8 @@ builder.Services.AddUsersModuleServices(builder.Configuration, logger, mediatRAs
 // OrderProcessing depends on Redis running
 // docker run --name my-redis -p 6379:6379 -d redis
 
-// Set up MediatR
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(mediatRAssemblies.ToArray()));
+// Set up Mediator (source generator based)
+builder.Services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
 builder.Services.AddMediatRLoggingBehavior();
 builder.Services.AddMediatRFluentValidationBehavior();
 builder.Services.AddValidatorsFromAssemblyContaining<AddItemToCartCommandValidator>();
@@ -63,6 +66,9 @@ app.UseAuthentication()
 
 app.UseFastEndpoints()
     .UseSwaggerGen();
+
+// Map Aspire default endpoints (health checks)
+app.MapDefaultEndpoints();
 
 app.Run();
 

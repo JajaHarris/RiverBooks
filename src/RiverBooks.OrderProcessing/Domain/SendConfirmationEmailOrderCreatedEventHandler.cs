@@ -1,10 +1,10 @@
-﻿using MediatR;
+﻿using Mediator;
 using RiverBooks.EmailSending.Contracts;
 using RiverBooks.Users.Contracts;
 
 namespace RiverBooks.OrderProcessing.Domain;
 
-internal class SendConfirmationEmailOrderCreatedEventHandler : INotificationHandler<OrderCreatedEvent>
+public class SendConfirmationEmailOrderCreatedEventHandler : INotificationHandler<OrderCreatedEvent>
 {
   private readonly IMediator _mediator;
 
@@ -12,7 +12,7 @@ internal class SendConfirmationEmailOrderCreatedEventHandler : INotificationHand
   {
     _mediator = mediator;
   }
-  public async Task Handle(OrderCreatedEvent notification, CancellationToken ct)
+  public async ValueTask Handle(OrderCreatedEvent notification, CancellationToken ct)
   {
     // get user email from id
     var userByIdQuery = new UserDetailsByIdQuery(notification.Order.UserId);

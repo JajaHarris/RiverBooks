@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result.AspNetCore;
 using FastEndpoints;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Identity;
 using RiverBooks.Users.CartEndpoints;
 using RiverBooks.Users.Domain;
@@ -36,9 +36,9 @@ internal sealed class Create : Endpoint<CreateUserRequest>
 
     if (!result.IsSuccess)
     {
-      await SendResultAsync(result.ToMinimalApiResult());
+      await HttpContext.Response.SendResultAsync(result.ToMinimalApiResult());
       return;
     }
-    await SendOkAsync();
+    await HttpContext.Response.SendOkAsync();
   }
 }

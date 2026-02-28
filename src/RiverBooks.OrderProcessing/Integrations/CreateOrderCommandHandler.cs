@@ -1,12 +1,12 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using RiverBooks.OrderProcessing.Contracts;
 using RiverBooks.OrderProcessing.Domain;
 using RiverBooks.OrderProcessing.Interfaces;
 
 namespace RiverBooks.OrderProcessing.Integrations;
 
-internal class CreateOrderCommandHandler : 
+public class CreateOrderCommandHandler : 
   IRequestHandler<CreateOrderCommand, Result<OrderDetailsResponse>>
 {
   private readonly IOrderRepository _orderRepository;
@@ -19,7 +19,7 @@ internal class CreateOrderCommandHandler :
     _addressCache = addressCache;
   }
 
-  public async Task<Result<OrderDetailsResponse>> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
+  public async ValueTask<Result<OrderDetailsResponse>> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
   {
     // need shipping and billing address info - how can we get it?
     // Option 1: Pass it into the command with everything else

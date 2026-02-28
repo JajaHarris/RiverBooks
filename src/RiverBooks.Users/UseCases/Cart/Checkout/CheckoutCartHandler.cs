@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
 using Ardalis.Result.AspNetCore;
-using MediatR;
+using Mediator;
 using RiverBooks.EmailSending.Contracts;
 using RiverBooks.OrderProcessing.Contracts;
 using RiverBooks.Users.Interfaces;
@@ -8,7 +8,7 @@ using RiverBooks.Users.UseCases.Cart.AddItem;
 
 namespace RiverBooks.Users.UseCases.Cart.Checkout;
 
-internal class CheckoutCartHandler : IRequestHandler<CheckoutCartCommand, Result<Guid>>
+public class CheckoutCartHandler : IRequestHandler<CheckoutCartCommand, Result<Guid>>
 {
   private readonly IApplicationUserRepository _userRepository;
   private readonly IMediator _mediator;
@@ -20,7 +20,7 @@ internal class CheckoutCartHandler : IRequestHandler<CheckoutCartCommand, Result
     _mediator = mediator;
   }
 
-  public async Task<Result<Guid>> Handle(CheckoutCartCommand request, CancellationToken cancellationToken)
+  public async ValueTask<Result<Guid>> Handle(CheckoutCartCommand request, CancellationToken cancellationToken)
   {
     var user = await _userRepository.GetUserWithCartByEmailAsync(request.EmailAddress);
 

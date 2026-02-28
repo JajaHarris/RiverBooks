@@ -23,6 +23,8 @@
   <Folder Name="/_Solution Items/">
     <File Path="Directory.Build.props" />
   </Folder>
+  <Project Path="RiverBooks.AppHost/RiverBooks.AppHost.csproj" />
+  <Project Path="RiverBooks.ServiceDefaults/RiverBooks.ServiceDefaults.csproj" />
   <Project Path="RiverBooks.SharedKernel/RiverBooks.SharedKernel.csproj" />
   <Project Path="RiverBooks.Web/RiverBooks.Web.csproj" />
 </Solution>

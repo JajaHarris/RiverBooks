@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Ardalis.Result;
 using FastEndpoints;
-using MediatR;
+using Mediator;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

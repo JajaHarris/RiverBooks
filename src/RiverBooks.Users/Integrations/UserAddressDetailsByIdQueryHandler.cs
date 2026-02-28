@@ -1,11 +1,11 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.Contracts;
 using RiverBooks.Users.Interfaces;
 
 namespace RiverBooks.Users.Integrations;
 
-internal class UserAddressDetailsByIdQueryHandler : IRequestHandler<UserAddressDetailsByIdQuery, Result<UserAddressDetails>>
+public class UserAddressDetailsByIdQueryHandler : IRequestHandler<UserAddressDetailsByIdQuery, Result<UserAddressDetails>>
 {
   private readonly IReadOnlyUserStreetAddressRepository _addressRepo;
 
@@ -13,7 +13,7 @@ internal class UserAddressDetailsByIdQueryHandler : IRequestHandler<UserAddressD
   {
     _addressRepo = addressRepo;
   }
-  public async Task<Result<UserAddressDetails>> Handle(UserAddressDetailsByIdQuery request,
+  public async ValueTask<Result<UserAddressDetails>> Handle(UserAddressDetailsByIdQuery request,
     CancellationToken ct)
   {
     var address = await _addressRepo.GetById(request.AddressId);

@@ -17,6 +17,12 @@ public static class EmailSendingModuleServicesExtensions
     services.Configure<MongoDBSettings>(config.GetSection("MongoDB"));
     services.AddMongoDB(config);
 
+    // configure Email settings
+    services.AddOptions<EmailSettings>()
+      .BindConfiguration("Email")
+      .ValidateDataAnnotations()
+      .ValidateOnStart();
+
     // configure module services
     services.AddSingleton<IOutboxProcessor, MongoDbEmailOutboxProcessor>();
     services.AddTransient<ISendEmail, MimeKitEmailSender>();

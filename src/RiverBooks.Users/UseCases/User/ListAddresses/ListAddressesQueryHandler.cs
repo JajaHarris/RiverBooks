@@ -1,11 +1,11 @@
 ﻿using Ardalis.Result;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.Interfaces;
 using RiverBooks.Users.UserEndpoints;
 
 namespace RiverBooks.Users.UseCases.User.ListAddresses;
 
-internal class ListAddressesQueryHandler : IRequestHandler<ListAddressesQuery, Result<List<UserAddressDto>>>
+public class ListAddressesQueryHandler : IRequestHandler<ListAddressesQuery, Result<List<UserAddressDto>>>
 {
   private readonly IApplicationUserRepository _userRepository;
 
@@ -14,7 +14,7 @@ internal class ListAddressesQueryHandler : IRequestHandler<ListAddressesQuery, R
     _userRepository = userRepository;
   }
 
-  public async Task<Result<List<UserAddressDto>>> Handle(ListAddressesQuery request,
+  public async ValueTask<Result<List<UserAddressDto>>> Handle(ListAddressesQuery request,
     CancellationToken cancellationToken)
   {
     var user = await _userRepository.GetUserWithAddressesByEmailAsync(request.EmailAddress);

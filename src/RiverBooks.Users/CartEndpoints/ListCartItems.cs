@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Ardalis.Result;
 using FastEndpoints;
-using MediatR;
+using Mediator;
 using RiverBooks.Users.UseCases.Cart.ListItems;
 
 namespace RiverBooks.Users.CartEndpoints;
@@ -33,13 +33,13 @@ internal class ListCartItems :
 
     if (result.Status == ResultStatus.Unauthorized)
     {
-      await SendUnauthorizedAsync();
+      await HttpContext.Response.SendUnauthorizedAsync();
     }
     else
     {
       var response = new CartResponse();
       response.CartItems = result.Value;
-      await SendAsync(response);
+      await HttpContext.Response.SendAsync(response);
     }
   }
 }

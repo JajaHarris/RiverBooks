@@ -10,7 +10,7 @@ This interactive diagram shows the dependencies between all projects in the Rive
 
 ## Interactive Dependency Diagram
 
-Built with (secret tool).
+Built with [nmbl](https://nmbl.dev).
 
 <iframe 
   src="/diagrams/riverbooks.dynamic.html" 

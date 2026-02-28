@@ -9,22 +9,6 @@
   url = "https://github.com/ardalis/RiverBooks"
   weight = 30
 
-# Sidebar navigation for docs section
-[[sidebar_docs]]
-  name = "Home"
-  pageRef = "/docs"
-  weight = 1
-
-[[sidebar_docs]]
-  name = "Getting Started"
-  pageRef = "/docs/getting-started"
-  weight = 10
-
-[[sidebar_docs]]
-  name = "Architecture"
-  pageRef = "/docs/architecture"
-  weight = 20
-
 # Social links
 [[social]]
   name = "GitHub"

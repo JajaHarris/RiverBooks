@@ -34,7 +34,7 @@ public class InfrastructureDependencyTests
 
     var rule = domainTypes.Should().NotDependOnAny(infrastructureTypes);
 
-    PrintTypes(domainTypes, infrastructureTypes);
+    //PrintTypes(domainTypes, infrastructureTypes);
 
     rule.Check(Architecture);
   }
@@ -52,7 +52,7 @@ public class InfrastructureDependencyTests
 
     var rule = useCasesTypes.Should().NotDependOnAny(infrastructureTypes);
 
-    PrintTypes(useCasesTypes, infrastructureTypes);
+    //PrintTypes(useCasesTypes, infrastructureTypes);
 
     rule.Check(Architecture);
   }

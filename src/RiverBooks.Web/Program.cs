@@ -51,7 +51,8 @@ builder.Services.AddMediatRFluentValidationBehavior();
 builder.Services.AddValidatorsFromAssemblyContaining<AddItemToCartCommandValidator>();
 builder.Services.AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>(); // domain events
 
-
+// TODO: Add a check that certain services are only registered once to avoid multiple modules 
+// stepping on one another's service wirings
 var app = builder.Build();
 
 app.UseHttpLogging();

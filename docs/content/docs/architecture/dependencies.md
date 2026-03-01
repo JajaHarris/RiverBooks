@@ -3,7 +3,7 @@ title: "Dependencies Diagram"
 description: "Interactive dependency diagram showing module relationships"
 summary: "Visual overview of how RiverBooks modules depend on each other"
 date: 2024-12-04
-weight: 1
+weight: 2
 ---
 
 This interactive diagram shows the dependencies between all projects in the RiverBooks solution. Modules are color-coded; non-module projects are grey. Note that main module projects (those without `.Tests` or `.Contracts` suffixes) should only be referenced by their own tests project and the application host (`RiverBooks.Web`).

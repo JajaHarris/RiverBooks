@@ -3,7 +3,7 @@ title: "Module Diagrams"
 description: "Interactive dependency diagrams for each RiverBooks module"
 summary: "Visual overview of internal dependencies within each module"
 date: 2024-12-04
-weight: 2
+weight: 3
 ---
 
 These interactive diagrams show the internal structure and dependencies within each RiverBooks module. Click and drag to explore, use the controls to zoom and pan.

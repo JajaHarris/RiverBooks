@@ -6,15 +6,15 @@ date: 2024-12-04
 weight: 2
 ---
 
-RiverBooks demonstrates a **Modular Monolith** architecture - a middle ground between traditional monoliths and microservices that offers the best of both worlds.
+RiverBooks demonstrates a [Modular Monolith architecture](https://modularmonoliths.com/) - a middle ground between traditional monoliths and microservices that offers the best of both worlds.
 
 ## What is a Modular Monolith?
 
 A modular monolith is a single deployable application that is internally organized into loosely coupled modules. Each module:
 
-- Has its own bounded context
+- Has its own [bounded context](https://deviq.com/domain-driven-design/bounded-context)
 - Owns its data and database schema
-- Communicates with other modules through well-defined interfaces
+- Communicates with other modules through well-defined interfaces/contracts
 - Can be developed and tested independently
 
 ## Benefits
@@ -22,6 +22,11 @@ A modular monolith is a single deployable application that is internally organiz
 - **Simpler Operations** - Single deployment, no distributed system complexity
 - **Clear Boundaries** - Modules enforce separation of concerns
 - **Easy Evolution** - Modules can be extracted to services later
+
+## Tradeoffs
+
+- **Single Language/Framework** - All modules share the same programming language and framework, generally (different .NET languages could be used)
+- **No Per-Module Scaling** -- Unlike microservices, if more resources are needed the whole monolith must be scaled (up and/or out)
 
 ## Project Structure
 
@@ -44,7 +49,7 @@ src/
 
 Modules communicate through two primary mechanisms:
 
-### 1. Contracts (Synchronous)
+### 1. Contracts
 
 Each module exposes a `Contracts` project containing:
 - DTOs (Data Transfer Objects)
@@ -53,7 +58,7 @@ Each module exposes a `Contracts` project containing:
 
 Other modules reference only the contracts, never the implementation.
 
-### 2. Integration Events (Asynchronous)
+### 2. Integration Events
 
 Modules publish domain events that other modules can subscribe to:
 
@@ -70,11 +75,11 @@ public record OrderCreatedIntegrationEvent(
 
 | Pattern | Usage |
 |---------|-------|
-| **CQRS** | Separate commands (writes) from queries (reads) |
-| **Mediator** | Decouple request handlers from controllers |
-| **Repository** | Abstract data access behind interfaces |
-| **Outbox** | Reliable event publishing (EmailSending module) |
-| **Domain Events** | Notify interested parties of state changes |
+| **[CQRS](https://deviq.com/design-patterns/cqrs-pattern)** | Separate commands (writes) from queries (reads) |
+| **[Mediator](https://deviq.com/design-patterns/mediator-pattern)** | Decouple request handlers from controllers |
+| **[Repository](https://deviq.com/design-patterns/repository-pattern)** | Abstract data access behind interfaces |
+| **[Outbox](https://deviq.com/design-patterns/outbox-pattern)** | Reliable event publishing (EmailSending module) |
+| **[Domain Events](https://deviq.com/design-patterns/domain-events-pattern)** | Notify interested parties of state changes |
 
 ## Explore More
 

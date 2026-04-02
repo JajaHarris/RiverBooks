@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NsDepCopConfig>
+    <Allowed From="*" To="*" />
+
+    <!-- Domain should not depend on Data (Infrastructure) -->
+    <Disallowed From="RiverBooks.Users.Domain.*"
+                To="RiverBooks.Users.Data.*" />
+
+    <!-- UseCases should not depend on Data (Infrastructure) -->
+    <Disallowed From="RiverBooks.Users.UseCases.*"
+                To="RiverBooks.Users.Data.*" />
+
+    <!-- Interfaces should not depend on Data (Infrastructure) -->
+    <Disallowed From="RiverBooks.Users.Interfaces.*"
+                To="RiverBooks.Users.Data.*" />
+
+    <!-- Integrations should not depend on Data (Infrastructure) -->
+    <Disallowed From="RiverBooks.Users.Integrations.*"
+                To="RiverBooks.Users.Data.*" />
+
+    <AnalyzerConfig>
+        <IssueKind Name="IllegalDependency" Severity="Error" />
+    </AnalyzerConfig>
+</NsDepCopConfig>

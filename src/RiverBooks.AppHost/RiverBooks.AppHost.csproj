@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RiverBooks.Web\RiverBooks.Web.csproj" />
-    <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.2.3" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.3.3" />
   </ItemGroup>
 
 </Project>

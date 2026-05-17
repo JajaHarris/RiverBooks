@@ -8,6 +8,7 @@ using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace RiverBooks.OrderProcessingTests.Arch;
 
+// NOTE: NsDepCop is my preferred tool for enforcing architecture dependencies.
 public class InfrastructureDependencyTests
 {
   public InfrastructureDependencyTests(ITestOutputHelper outputHelper)
@@ -25,11 +26,11 @@ public class InfrastructureDependencyTests
   public void DomainTypesShouldNotReferenceInfrastructure()
   {
     var domainTypes = Types().That()
-      .ResideInNamespace("RiverBooks.OrderProcessing.Domain.*", useRegularExpressions: true)
+      .ResideInNamespace("RiverBooks.OrderProcessing.Domain*")
       .As("OrderProcessing Domain Types");
 
     var infrastructureTypes = Types().That()
-      .ResideInNamespace("RiverBooks.OrderProcessing.Infrastructure.*", useRegularExpressions: true)
+      .ResideInNamespace("RiverBooks.OrderProcessing.Infrastructure*")
       .As("Infrastructure Types");
 
     var rule = domainTypes.Should().NotDependOnAny(infrastructureTypes);
@@ -43,11 +44,11 @@ public class InfrastructureDependencyTests
   public void UseCaseTypesShouldNotReferenceInfrastructure()
   {
     var useCasesTypes = Types().That()
-      .ResideInNamespace("RiverBooks.OrderProcessing.UseCases.*", useRegularExpressions: true)
+      .ResideInNamespace("RiverBooks.OrderProcessing.UseCases*")
       .As("OrderProcessing UsesCases Types");
 
     var infrastructureTypes = Types().That()
-      .ResideInNamespace("RiverBooks.OrderProcessing.Infrastructure.*", useRegularExpressions: true)
+      .ResideInNamespace("RiverBooks.OrderProcessing.Infrastructure*")
       .As("Infrastructure Types");
 
     var rule = useCasesTypes.Should().NotDependOnAny(infrastructureTypes);
